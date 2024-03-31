@@ -1,3 +1,5 @@
+const tl = gsap.timeline();
+
 window.addEventListener("DOMContentLoaded", ()=>{
     counter();
     moveAnimation();
@@ -31,7 +33,6 @@ function counter(){
 }
 
 function introAnimation(){
-    const tl = gsap.timeline();
     tl.to('.counter', {
         y: -320,
         ease: "power4.inOut",
@@ -75,7 +76,6 @@ function introAnimation(){
 }
 
 function moveAnimation() {
-    const tl = gsap.timeline();
     const nav = document.querySelectorAll('li, .logo');
     let i = 3;
     let isAnimating = false;
@@ -110,9 +110,38 @@ function moveAnimation() {
                     ease: 'power4.inOut',
                     duration: 1.5,
                     onComplete: () => {
+                        if(target.classList.contains("about")){
+                            aboutAnimtaion();
+                        }
+                        else if(target.classList.contains("hobby")){
+                            hobbyAnimation();
+                        }
                         isAnimating = false;
                     }
                 })
         })
+    })
+}
+
+function aboutAnimtaion(){
+    tl.to(".col-left", {
+        scale: 1,
+        duration: .65,
+        ease: 'power2.out',
+    })
+    .to(".info-box", {
+        opacity: 1,
+        stagger: .2,
+        duration: .65,
+        ease: "power4.inOut",
+    })
+}
+
+function hobbyAnimation(){
+    tl.to(".hobby-item", {
+        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+        stagger: .3,
+        ease: "expo.in",
+        duration: 1,
     })
 }
