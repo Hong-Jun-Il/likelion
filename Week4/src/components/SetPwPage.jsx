@@ -50,8 +50,8 @@ const SetPwPage = () => {
                 <input type="text" value={userData.email} readOnly />
                 <input type="text" value={userData.number} readOnly />
                 <input type="text" value={id} readOnly />
-                <input type="text" onChange={onChange} value={input.pw} name='pw' />
-                <input type="text" onChange={onChange} value={input.checkPw} name='checkPw' />
+                <input type="text" onChange={onChange} value={input.pw} name='pw' placeholder='비밀번호' />
+                <input type="text" onChange={onChange} value={input.checkPw} name='checkPw' placeholder='비밀번호 확인' />
                 <button onClick={resetPw}>비밀번호 변경</button>
             </form>
         </SetPWPageWrapper>
